@@ -208,6 +208,7 @@ class TestABB(unittest.TestCase):
     if self.msg:
       print(self.msg, file=sys.stderr)
 
+
 class TestLeaks(TestABB):
   """Mismas pruebas, pero con detector de leaks en Valgrind.
 
