@@ -3,8 +3,6 @@
 
 from __future__ import print_function
 
-import itertools
-import operator
 import random
 import subprocess
 import sys
