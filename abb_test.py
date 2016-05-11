@@ -52,19 +52,16 @@ class TestABB(unittest.TestCase):
   """
   def test1_insertar(self):
     for tree in gen_trees(7):
-      self.reset()
       self.check_insertar(tree)
     self.msg = None
 
   def test2_borrar(self):
     for ins_tree in gen_trees(5):
       for del_keys in gen_trees(5):
-        self.reset()
         self.check_borrar(del_keys, ins_tree)
     self.msg = None
 
     for ins_tree in gen_trees(7):
-      self.reset()
       del_keys = list(ins_tree)
       random.shuffle(del_keys)
       self.check_borrar(del_keys, ins_tree)
@@ -81,6 +78,7 @@ class TestABB(unittest.TestCase):
   # Funciones auxiliares.
 
   def check_insertar(self, tree):
+    self.reset()
     for i, key in enumerate(tree):
       fmt = " ".join(map(str, tree[:i+1]))
 
@@ -101,6 +99,7 @@ class TestABB(unittest.TestCase):
       self.assertEqual(val(key), self.obtener(key))
 
   def check_borrar(self, del_keys, ins_tree):
+    self.reset()
     tam = len(ins_tree)
     fmt_ins = " ".join(map(str, ins_tree))
 
@@ -122,6 +121,7 @@ class TestABB(unittest.TestCase):
       self.assertEqual(tam, self.cantidad())
 
   def check_reemplazar(self, repl_order, ins_tree):
+    self.reset()
     fmt = " ".join(map(str, repl_order))
     fmt_ins = " ".join(map(str, ins_tree))
 
