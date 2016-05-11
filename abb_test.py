@@ -22,7 +22,6 @@ def gen_trees(n):
       http://www.stringology.org/event/2009/psc09p17_presentation.pdf
 
   """
-  assert n < 10
   xs = [x for x in range(1, n + 1)]
 
   def next_tree():
