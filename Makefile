@@ -10,8 +10,8 @@ test: abb_aux
 
 abb_aux: abb.o abb_aux.o
 
-# Estructuras adicionales.
-abb_aux: pila.o
+# Dependencias adicionales.
+-include deps.mk
 
 clean:
 	rm -f abb_aux *.o

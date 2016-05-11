@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # coding: utf-8
 
 from __future__ import print_function
@@ -8,6 +8,8 @@ import subprocess
 import sys
 import unittest
 
+# Nombre del programita auxiliar. Debe estar sincronizado
+# con el nombre que aparece en el makefile.
 CMD_NAME = "./abb_aux"
 
 
