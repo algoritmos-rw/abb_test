@@ -220,12 +220,19 @@ class TestLeaks(TestABB):
                                  stderr=subprocess.PIPE)
 
 
-def val(x):
-  return x + ord("0")
+def val(key):
+  """Valor guardado en el ABB: código ASCII del primer caracter.
+
+  Debe estar sincronizado con la implementación en C.
+  """
+  assert key < 10  # El código C no soporta double-digits.
+  return key + ord("0")
 
 
-def val2(x):
-  return val(x) * 2
+def val2(key):
+  """Valor para los reemplazos del ABB: el doble del primer valor.
+  """
+  return val(key) * 2
 
 
 if __name__ == "__main__":

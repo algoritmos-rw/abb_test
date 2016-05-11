@@ -7,6 +7,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define VAL(key) (key[0])
+#define VAL2(val) (val * 2)
+
 /*
  * Realiza una serie de operaciones leídas por entrada estándar.
  */
@@ -19,7 +22,7 @@ int main(void) {
   while (getline(&linea, &tam, stdin) >= 0) {
     const char *key = linea + 1;
     void *val;
-    intptr_t ival = *key;
+    intptr_t ival = VAL(key);
 
     switch (*linea) {
     case 'G':
@@ -35,7 +38,7 @@ int main(void) {
 
     case 'R':
       // Reemplazar
-      printf("OK %d\n", abb_guardar(abb, key, (void*) (ival*2)));
+      printf("OK %d\n", abb_guardar(abb, key, (void*) VAL2(ival)));
       break;
 
     case 'O':
