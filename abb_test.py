@@ -181,8 +181,12 @@ class TestABB(unittest.TestCase):
     if self.proc.returncode is not None:
       self.fail("Murió el proceso abb_aux")
     else:
-      ok, val = line.split(" ", 1)
-      return int(val)
+      try:
+        ok, val = line.split(" ", 1)
+      except ValueError:
+        self.fail("Murió el proceso abb_aux?")
+      else:
+        return int(val)
 
   def setUp(self):
     self.seq = []
