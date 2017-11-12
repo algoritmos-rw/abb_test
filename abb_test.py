@@ -204,6 +204,7 @@ class TestABB(unittest.TestCase):
         return int(val)
 
   def setUp(self):
+    self.msg = None
     self.seq = []
     self.proc = subprocess.Popen(["valgrind", CMD_NAME],
                                  stdin=subprocess.PIPE,
@@ -216,7 +217,7 @@ class TestABB(unittest.TestCase):
 
     if r:
       print("\n\nABB MURIÓ{}\n{}\n".format(" CON SEGMENTATION FAULT"
-                                           if r == -11 else "", self.msg),
+                                           if r == -11 else "", self.msg if self.msg else ""),
             file=sys.stderr)
       sys.stderr.write(self.proc.stderr.read())
     else:
@@ -233,6 +234,7 @@ class TestLeaks(TestABB):
   Solo se ejecuta si las anteriores pasaron.
   """
   def setUp(self):
+    self.msg = None
     self.seq = []
     self.proc = subprocess.Popen(["valgrind", "--leak-check=full",
                                   "--track-origins=yes", CMD_NAME],
