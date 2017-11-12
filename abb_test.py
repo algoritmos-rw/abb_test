@@ -217,7 +217,7 @@ class TestABB(unittest.TestCase):
 
     if r:
       print("\n\nABB MURIÓ{}\n{}\n".format(" CON SEGMENTATION FAULT"
-                                           if r == -11 else "", self.msg if self.msg else ""),
+                                           if r == -11 else "", self.msg),
             file=sys.stderr)
       sys.stderr.write(self.proc.stderr.read())
     else:
