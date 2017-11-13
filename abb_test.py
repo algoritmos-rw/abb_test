@@ -186,7 +186,10 @@ class TestABB(unittest.TestCase):
 
   def reset(self):
     self.seq = []
-    return self._communicate("X")
+    (msg, self.msg) = (self.msg,
+                       "Posible fallo en abb_destruir().\n")
+    self._communicate("X")
+    self.msg = msg
 
   def _communicate(self, cmd, key=""):
     self.proc.stdin.write("{}{}\n".format(cmd, key))
