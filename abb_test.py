@@ -67,6 +67,8 @@ class TestABB(unittest.TestCase):
 
     - claves de más de un caracter (!)
   """
+  VALGRIND = ["valgrind"]
+
   def test1_insertar(self):
     for tree in gen_trees(7):
       self.check_insertar(tree)
@@ -205,7 +207,7 @@ class TestABB(unittest.TestCase):
 
   def setUp(self):
     self.seq = []
-    self.proc = subprocess.Popen(["valgrind", CMD_NAME],
+    self.proc = subprocess.Popen(self.VALGRIND + [CMD_NAME],
                                  stdin=subprocess.PIPE,
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.PIPE)
@@ -232,13 +234,7 @@ class TestLeaks(TestABB):
 
   Solo se ejecuta si las anteriores pasaron.
   """
-  def setUp(self):
-    self.seq = []
-    self.proc = subprocess.Popen(["valgrind", "--leak-check=full",
-                                  "--track-origins=yes", CMD_NAME],
-                                 stdin=subprocess.PIPE,
-                                 stdout=subprocess.PIPE,
-                                 stderr=subprocess.PIPE)
+  VALGRIND = ["valgrind", "--leak-check=full", "--track-origins=yes"]
 
 
 def val(key):
