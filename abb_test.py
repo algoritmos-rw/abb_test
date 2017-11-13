@@ -206,6 +206,7 @@ class TestABB(unittest.TestCase):
         return int(flag)
 
   def setUp(self):
+    self.msg = None
     self.seq = []
     self.proc = subprocess.Popen(self.VALGRIND + [CMD_NAME],
                                  stdin=subprocess.PIPE,
