@@ -197,11 +197,11 @@ class TestABB(unittest.TestCase):
       self.fail("Murió el proceso abb_aux")
     else:
       try:
-        ok, val = line.split(" ", 1)
+        unused_ok, flag = line.split(" ", 1)
       except ValueError:
         self.fail("Murió el proceso abb_aux?")
       else:
-        return int(val)
+        return int(flag)
 
   def setUp(self):
     self.seq = []
