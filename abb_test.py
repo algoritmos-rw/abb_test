@@ -187,7 +187,7 @@ class TestABB(unittest.TestCase):
   def reset(self):
     self.seq = []
     (msg, self.msg) = (self.msg,
-                       "Posible fallo en abb_destruir().\n")
+                       "Posible fallo en abb_destruir() o abb_crear().\n")
     self._communicate("X")
     self.msg = msg
 
