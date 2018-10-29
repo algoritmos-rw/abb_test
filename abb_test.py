@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # coding: utf-8
 #
 # Copyright 2016 Adeodato Simó
@@ -193,7 +193,6 @@ class TestABB(unittest.TestCase):
 
   def _communicate(self, cmd, key=""):
     self.proc.stdin.write("{}{}\n".format(cmd, key))
-    self.proc.stdin.flush()
 
     line = self.proc.stdout.readline()
     self.proc.poll()
@@ -212,6 +211,8 @@ class TestABB(unittest.TestCase):
     self.msg = None
     self.seq = []
     self.proc = subprocess.Popen(self.VALGRIND + [CMD_NAME],
+                                 bufsize=1, # Line-buffered.
+                                 universal_newlines=True,
                                  stdin=subprocess.PIPE,
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.PIPE)
