@@ -14,6 +14,6 @@ abb_aux: abb.o abb_aux.o
 -include deps.mk
 
 clean:
-	rm -f abb_aux *.o
+	rm -f abb_aux *.o core vgcore.*
 
 .PHONY: test clean
