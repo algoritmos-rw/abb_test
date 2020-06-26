@@ -228,6 +228,11 @@ class TestABB(unittest.TestCase):
       self.proc.stdin.close()
       self.proc.wait()
 
+    # Python 3 UnitTest emite un ResourceWarning si encuentra file descriptors
+    # abiertos.
+    self.proc.stdout.close()
+    self.proc.stderr.close()
+
     if self.msg:
       print(self.msg, file=sys.stderr)
 
