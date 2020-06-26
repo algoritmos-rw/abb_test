@@ -195,9 +195,8 @@ class TestABB(unittest.TestCase):
     self.proc.stdin.write("{}{}\n".format(cmd, key))
 
     line = self.proc.stdout.readline()
-    self.proc.poll()
 
-    if self.proc.returncode is not None:
+    if self.proc.poll() is not None:
       self.fail("Murió el proceso abb_aux")
     else:
       try:
@@ -218,8 +217,7 @@ class TestABB(unittest.TestCase):
                                  stderr=subprocess.PIPE)
 
   def tearDown(self):
-    self.proc.poll()
-    r = self.proc.returncode
+    r = self.proc.poll()
 
     if r:
       print("\n\nABB MURIÓ{}\n{}\n".format(" CON SEGMENTATION FAULT"
