@@ -5,8 +5,11 @@ CFLAGS += -Wconversion -Wno-sign-conversion -Wbad-function-cast
 # Se puede comentar durante el desarrollo.
 CFLAGS += -Werror
 
+# Usar Python 3 si se encuentra; Python 2 si no.
+PYTHON := $(shell which python3 python python2 | sed -ne 's@.*/@@p;q')
+
 test: abb_aux
-	./abb_test.py
+	$(PYTHON) ./abb_test.py
 
 abb_aux: abb.o abb_aux.o
 
